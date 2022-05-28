@@ -14,12 +14,13 @@ public class RegistroEstudiante {
     public static int getIndice() {
         return indice;
     }
+    static MetodoVectores metodoVectores = new MetodoVectores();
+    static MetodoFilas metodoFilas= new MetodoFilas();
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        MetodoVectores metodoVectores = new MetodoVectores();
-        MetodoFilas metodoFilas= new MetodoFilas();
+
         System.out.println("REGISTRO DE ESTUDIANTES DE INGENIERIA EN SISTEMAS");
-        System.out.println("_________________________________________________");
+        System.out.println("*************************************************");
         System.out.println("Seleccione el tipo de registro que desea utilizar: ");
         System.out.println("\n1) Registro por Arrays.");
         System.out.println("2) Registro por Listas. ");
@@ -36,9 +37,16 @@ public class RegistroEstudiante {
                 metodoVectores.registroGrado();
                 break;
             case 2:
-                System.out.println("    REGISTRO POR MEDIO DE LISTAS    ");
+                System.out.println("         REGISTRO POR MEDIO DE LISTAS          ");
                 System.out.println("\nREGISTRO DE ESTUDIANTE");
-
+                metodoFilas.registroAlumno();
+                System.out.println(metodoFilas.listaEstudiante);
+                System.out.println("\nREGISTRO DE CURSO");
+                metodoFilas.registroCurso();
+                System.out.println(metodoFilas.listaCurso);
+                System.out.println("\nREGISTRO DE GRADO");
+                metodoFilas.registroGrado();
+                System.out.println(metodoFilas.listaGrado);
                 break;
             case 3:
                 System.out.println("    MUCHAS GRACIAS POR UTILIZAR NUESTRO PROGRAMA DE REGISTRO    ");

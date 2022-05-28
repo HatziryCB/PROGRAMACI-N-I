@@ -12,17 +12,23 @@ public class MetodoVectores extends RegistroEstudiante{
     Scanner sc=new Scanner(System.in);
     RegistroEstudiante registroEstudiante=new RegistroEstudiante();
 
-    public MetodoVectores(int indentador, String[] vector) {
-        this.indentador = 0;
-        this.vector = vector;
-        this.indice=0;
-    }
     public MetodoVectores() {
+        this.indentador = 0;
+        this.vector = new String[20];
+        this.indice=0;
         this.codigoEstudiante = codigoEstudiante;
         this.telefono = telefono;
         this.nombre = nombre;
         this.alias = alias;
         this.correo = correo;
+    }
+    @Override
+    public String toString() {
+        return "Codigo estudiante: '" + codigoEstudiante + '\'' +
+                ", Nombre: '" + nombre + '\'' +
+                ", Alias: '" + alias + '\'' +
+                ", Correo: '" + correo + '\'' +
+                ", Telefono: '" + telefono + '\'';
     }
 
     public void registroAlumno() {
@@ -47,7 +53,7 @@ public class MetodoVectores extends RegistroEstudiante{
             telefono=sc.nextLine();
             indice++;
         }
-        System.out.println(Arrays.toString(vector));
+
     }
     public void registroCurso(){
         System.out.println("Ingrese la cantidad de registros que desee realizar: ");
@@ -71,14 +77,11 @@ public class MetodoVectores extends RegistroEstudiante{
             System.out.println("Descripccion de grado: ");
             descripcion=sc.nextLine();
         }
-    }
-    public void registroTransaccion(String nombre, double codigoEstudiante, String alias, String correo,double telefono){
-        indice=indice+1;
-        vector[indice]=nombre+" / "+codigoEstudiante+" / "+alias+" / "+correo+" / "+telefono;
+
     }
         public void mostrarDatos(){
             try{
-                for(int i=0; i<vector[indice].length();i++){
+                for(int i=0; i<vector[indice].length();i++)
                     if(vector[indice]!= null){
                         System.out.println(vector[indice]);
                     }
