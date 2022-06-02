@@ -9,12 +9,16 @@ public class MetodoVectores extends RegistroEstudiante{
     protected int indentador=0;
     protected int indice;
     protected String [] vector;
+    protected String [] vector2;
+    protected String [] vector3;
     Scanner sc=new Scanner(System.in);
     RegistroEstudiante registroEstudiante=new RegistroEstudiante();
 
     public MetodoVectores() {
         this.indentador = 0;
-        this.vector = new String[20];
+        this.vector = new String[100];
+        this.vector2= new String [100];
+        this.vector3= new String[100];
         this.indice=0;
         this.codigoEstudiante = codigoEstudiante;
         this.telefono = telefono;
@@ -22,66 +26,76 @@ public class MetodoVectores extends RegistroEstudiante{
         this.alias = alias;
         this.correo = correo;
     }
-    @Override
-    public String toString() {
-        return "Codigo estudiante: '" + codigoEstudiante + '\'' +
-                ", Nombre: '" + nombre + '\'' +
-                ", Alias: '" + alias + '\'' +
-                ", Correo: '" + correo + '\'' +
-                ", Telefono: '" + telefono + '\'';
-    }
 
     public void registroAlumno() {
         System.out.println("Ingrese la cantidad de registros que desee realizar: ");
         int indentador=sc.nextInt();
+        sc.nextLine();
         for (int i = 0; i <indentador; i++) {
             System.out.println("Nombre y apellido del estudiante: ");
-            nombre=sc.nextLine();
-            sc.nextLine();
+            vector[indice]=sc.nextLine();
             indice++;
             System.out.println("Codigo del estudiante: ");
-            codigoEstudiante=sc.nextLine();
+            vector[indice]=sc.nextLine();
             indice++;
             System.out.println("Ingrese el alias del estudiante: ");
-            alias=sc.nextLine();
-            sc.nextLine();
+            vector[indice]=sc.nextLine();
             indice++;
             System.out.println("Correo del estudiante: ");
-            correo=sc.nextLine();
+            vector[indice]=sc.nextLine();
             indice++;
             System.out.println("Telefono del estudiante: ");
-            telefono=sc.nextLine();
+            vector[indice]=sc.nextLine();
             indice++;
+            this.historial(nombre,codigoEstudiante,alias,correo,telefono);
         }
+        this.historial(nombre,codigoEstudiante,alias,correo,telefono);
 
     }
     public void registroCurso(){
         System.out.println("Ingrese la cantidad de registros que desee realizar: ");
         int indentador=sc.nextInt();
+        sc.nextLine();
         for (int i = 0; i <indentador; i++) {
             System.out.println("Codigo de curso: ");
-            codigoCurso=sc.nextLine();
+            vector2[indice]=sc.nextLine();
             indice++;
             System.out.println("Nombre de curso: ");
-            nombreCurso=sc.nextLine();
+            vector2[indice]=sc.nextLine();
             indice++;
+            this.historial2(codigoCurso,nombreCurso);
         }
+        this.historial2(codigoCurso,nombreCurso);
     }
     public void registroGrado(){
         System.out.println("Ingrese la cantidad de registros que desee realizar: ");
         int indentador=sc.nextInt();
+        sc.nextLine();
         for (int i = 0; i <indentador; i++) {
             System.out.println("Codigo de Grado: ");
-            codigoGrado=sc.nextLine();
+            vector3[indice]=sc.nextLine();
             indice++;
             System.out.println("Descripccion de grado: ");
-            descripcion=sc.nextLine();
+            vector3[indice]=sc.nextLine();
+            this.historial3(codigoGrado,descripcion);
         }
-
+        this.historial3(codigoGrado,descripcion);
     }
+        public void historial(String nombre,String codigoEstudiante, String alias, String correo, String telefono){
+            indice=indice+1;
+            vector[indice]="Nombre estudiante: "+nombre+"\nCodigo de Estudiante: "+codigoEstudiante+"\nApodo: "+alias+"\nEmail: "+correo+"\nTelefono: "+telefono;
+        }
+        public void historial2(String codigoCurso,String nombreCurso){
+            indice=indice+1;
+            vector2[indice]="Codigo de curso: "+codigoCurso+"\nNombre de curso: "+nombreCurso;
+        }
+        public void historial3(String codigoGrado,String descripcion){
+            indice=indice+1;
+            vector3[indice]="Codigo de grado: "+codigoGrado+"\nDescripcion de grado: "+descripcion;
+        }
         public void mostrarDatos(){
             try{
-                for(int i=0; i<vector[indice].length();i++)
+                for(int i=0; i<vector[indice].length();i++){
                     if(vector[indice]!= null){
                         System.out.println(vector[indice]);
                     }
@@ -90,4 +104,27 @@ public class MetodoVectores extends RegistroEstudiante{
                 System.out.println(error.getMessage());
             }
         }
+        public void mostrarDatos2(){
+            try{
+                for(int i=0; i<vector2[indice].length();i++){
+                    if(vector2[indice]!= null){
+                        System.out.println(vector2[indice]);
+                    }
+                }
+            }catch(Exception error){
+                System.out.println(error.getMessage());
+            }
+        }
+        public void mostrarDatos3(){
+            try{
+                for(int i=0; i<vector3[indice].length();i++){
+                    if(vector3[indice]!= null){
+                        System.out.println(vector3[indice]);
+                    }
+                }
+            }catch(Exception error){
+                System.out.println(error.getMessage());
+            }
+        }
+
 }
